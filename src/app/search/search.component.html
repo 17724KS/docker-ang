@@ -1,0 +1,32 @@
+<div style="text-align:left">
+<button md-button (click)="getImage()">Show Docker Images</button>
+
+
+<md-card class="docker-card" *ngFor="let image of searchResult">
+  <md-card-header>
+      <md-card-title>
+      <a md-raised-button>Image: {{image}}</a>
+      </md-card-title>
+       </md-card-header>
+            <md-card-actions>
+    <button md-button (click)="getInf(image)">Info</button>
+    <button md-button (click)="getVer(image)">Versions</button>
+    
+    
+    <div *ngIf="name == image">
+    <div *ngIf="toggle == false">
+    <p *ngFor = "let version of versions" >{{version}} <button md-button (click)="getDelete(image, version)">Delete</button></p>
+    </div>
+    
+    <div *ngIf="toggle == true">
+    <p>tag: {{tag}}</p>
+    <p>architecture:{{architecture}}</p>
+    <p>SchemaVersion: {{schemaVersion}}</p>
+    </div>
+    </div>
+    
+    </md-card-actions>   
+</md-card>
+</div>
+
+    
